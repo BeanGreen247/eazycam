@@ -1,0 +1,751 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Silk.NET.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Silk.NET.Core.Attributes.CountAttribute">
+            <summary>
+            Represents the count of a parameter.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.Attributes.CountAttribute.Count">
+            <summary>
+            Gets or sets the static count.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.Attributes.CountAttribute.Parameter">
+            <summary>
+            Gets or sets the deterministic parameter for this count.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.Attributes.CountAttribute.Computed">
+            <summary>
+            Gets or sets the computed count.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Core.Attributes.FlowAttribute">
+            <summary>
+            The direction a parameter flows.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Attributes.FlowAttribute.#ctor(Silk.NET.Core.Native.FlowDirection)">
+            <summary>
+            Create a new FlowAttribute.
+            </summary>
+            <param name="flowDirection">The direction this attribute flows.</param>
+        </member>
+        <member name="P:Silk.NET.Core.Attributes.FlowAttribute.Direction">
+            <summary>
+            The direction this parameter flows.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Core.Contexts.DefaultNativeContext">
+            <summary>
+            A native context that uses an <see cref="T:Silk.NET.Core.Loader.UnmanagedLibrary" /> for native library/function loading.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.DefaultNativeContext.#ctor(Silk.NET.Core.Loader.UnmanagedLibrary)">
+            <summary>
+            Creates a new native context for the given underlying library.
+            </summary>
+            <param name="library">The library to use.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.DefaultNativeContext.#ctor(System.String)">
+            <summary>
+            Loads a native library using the given name and creates a new native context from it.
+            </summary>
+            <param name="name">The name of the underlying library.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.DefaultNativeContext.#ctor(System.String[])">
+            <summary>
+            Loads a native library using the given possible names and creates a new native context from it.
+            </summary>
+            <param name="names">The possible names of the underlying library.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.DefaultNativeContext.#ctor(System.String,Silk.NET.Core.Loader.LibraryLoader)">
+            <summary>
+            Loads a native library using the given name and a custom loader, then creates a new native context from it.
+            </summary>
+            <param name="name">The name of the underlying library.</param>
+            <param name="loader">The custom loader to use.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.DefaultNativeContext.#ctor(System.String[],Silk.NET.Core.Loader.LibraryLoader)">
+            <summary>
+            Loads a native library using the given possible names and a custom loader, then creates a new native
+            context from it.
+            </summary>
+            <param name="names">The possible names of the underlying library.</param>
+            <param name="loader">The custom loader to use.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.DefaultNativeContext.#ctor(System.String,Silk.NET.Core.Loader.LibraryLoader,Silk.NET.Core.Loader.PathResolver)">
+            <summary>
+            Loads a native library using the given name, custom loader, and path resolver; then creates a new native
+            context from it.
+            </summary>
+            <param name="name">The name of the underlying library.</param>
+            <param name="loader">The custom loader to use.</param>
+            <param name="pathResolver">The path resolver to use.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.DefaultNativeContext.#ctor(System.String[],Silk.NET.Core.Loader.LibraryLoader,Silk.NET.Core.Loader.PathResolver)">
+            <summary>
+            Loads a native library using the given possible names, custom loader, and path resolver; then creates a
+            new native context from it.
+            </summary>
+            <param name="names">The possible names of the underlying library.</param>
+            <param name="loader">The custom loader to use.</param>
+            <param name="pathResolver">The path resolver to use.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.DefaultNativeContext.GetProcAddress(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.DefaultNativeContext.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.IVkSurface.Create``1(Silk.NET.Core.Native.VkHandle,``0*)">
+            <summary>
+            Create a Vulkan surface.
+            </summary>
+            <param name="instance">The Vulkan instance to create a surface for.</param>
+            <param name="allocator">A custom Vulkan allocator. Can be omitted by passing null.</param>
+            <typeparam name="T">Allocator type</typeparam>
+            <returns>A handle to the Vulkan surface created</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.IVkSurface.GetRequiredExtensions(System.UInt32@)">
+            <summary>
+            Get the extensions required for Vulkan to work on this platform.
+            </summary>
+            <param name="count">The number of extensions in the returned array</param>
+            <returns>An array of strings, containing names for all required extensions</returns>
+        </member>
+        <member name="T:Silk.NET.Core.Contexts.MultiNativeContext">
+            <summary>
+            A <see cref="T:Silk.NET.Core.Contexts.INativeContext"/> implementation which uses multiple children <see cref="T:Silk.NET.Core.Contexts.INativeContext"/>s for
+            sourcing its function pointers.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.Contexts.MultiNativeContext.Contexts">
+            <summary>
+            The child contexts.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.MultiNativeContext.#ctor(Silk.NET.Core.Contexts.INativeContext[])">
+            <summary>
+            Creates a <see cref="T:Silk.NET.Core.Contexts.MultiNativeContext"/> from the given child contexts.
+            </summary>
+            <param name="contexts">The children to use.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.MultiNativeContext.GetProcAddress(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Core.Contexts.MultiNativeContext.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="T:Silk.NET.Core.Loader.DefaultPathResolver">
+            <summary>
+                Enumerates possible library load targets. This default implementation returns the following load targets:
+                First: The library contained in the applications base folder.
+                Second: The simple name, unchanged.
+                Third: The library as resolved via the default DependencyContext, in the default nuget package cache folder.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.DefaultPathResolver.EnumeratePossibleLibraryLoadTargets(System.String)">
+            <summary>
+                Returns an enumerator which yields possible library load targets, in priority order.
+            </summary>
+            <param name="name">The name of the library to load.</param>
+            <returns>An enumerator yielding load targets.</returns>
+        </member>
+        <member name="T:Silk.NET.Core.Loader.LibraryLoader">
+            <summary>
+                Exposes functionality for loading native libraries and function pointers.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.LoadNativeLibrary(System.String)">
+            <summary>
+                Loads a native library by name and returns an operating system handle to it.
+            </summary>
+            <param name="name">The name of the library to open.</param>
+            <returns>The operating system handle for the shared library.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.TryLoadNativeLibrary(System.String,System.IntPtr@)">
+            <summary>
+                Loads a native library by name and returns an operating system handle to it.
+            </summary>
+            <param name="name">The name of the library to open.</param>
+            <param name="result">A pointer to the loaded library.</param>
+            <returns>The operating system handle for the shared library.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.LoadNativeLibrary(System.String[])">
+            <summary>
+                Loads a native library by name and returns an operating system handle to it.
+            </summary>
+            <param name="names">
+                An ordered list of names. Each name is tried in turn, until the library is successfully loaded.
+            </param>
+            <returns>The operating system handle for the shared library.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.TryLoadNativeLibrary(System.String[],System.IntPtr@)">
+            <summary>
+                Loads a native library by name and returns an operating system handle to it.
+            </summary>
+            <param name="names">
+                An ordered list of names. Each name is tried in turn, until the library is successfully loaded.
+            </param>
+            <param name="result">A pointer to the loaded library.</param>
+            <returns>The operating system handle for the shared library.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.LoadNativeLibrary(System.String,Silk.NET.Core.Loader.PathResolver)">
+            <summary>
+                Loads a native library by name and returns an operating system handle to it.
+            </summary>
+            <param name="name">The name of the library to open.</param>
+            <param name="pathResolver">The path resolver to use.</param>
+            <returns>The operating system handle for the shared library.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.TryLoadNativeLibrary(System.String,Silk.NET.Core.Loader.PathResolver,System.IntPtr@)">
+            <summary>
+                Loads a native library by name and returns an operating system handle to it.
+            </summary>
+            <param name="name">The name of the library to open.</param>
+            <param name="pathResolver">The path resolver to use.</param>
+            <param name="result">A pointer to the loaded library.</param>
+            <returns>The operating system handle for the shared library.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.LoadNativeLibrary(System.String[],Silk.NET.Core.Loader.PathResolver)">
+            <summary>
+                Loads a native library by name and returns an operating system handle to it.
+            </summary>
+            <param name="names">
+                An ordered list of names. Each name is tried in turn, until the library is successfully loaded.
+            </param>
+            <param name="pathResolver">The path resolver to use.</param>
+            <returns>The operating system handle for the shared library.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.TryLoadNativeLibrary(System.String[],Silk.NET.Core.Loader.PathResolver,System.IntPtr@)">
+            <summary>
+                Loads a native library by name and returns an operating system handle to it.
+            </summary>
+            <param name="names">
+                An ordered list of names. Each name is tried in turn, until the library is successfully loaded.
+            </param>
+            <param name="pathResolver">The path resolver to use.</param>
+            <param name="result">A pointer to the loaded library.</param>
+            <returns>The operating system handle for the shared library.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.LoadFunctionPointer(System.IntPtr,System.String)">
+            <summary>
+                Loads a function pointer out of the given library by name.
+            </summary>
+            <param name="handle">The operating system handle of the opened shared library.</param>
+            <param name="functionName">The name of the exported function to load.</param>
+            <returns>A pointer to the loaded function.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.FreeNativeLibrary(System.IntPtr)">
+            <summary>
+                Frees the library represented by the given operating system handle.
+            </summary>
+            <param name="handle">The handle of the open shared library.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.CoreLoadNativeLibrary(System.String)">
+            <summary>
+                Loads a native library by name and returns an operating system handle to it.
+            </summary>
+            <param name="name">The name of the library to open. This parameter must not be null or empty.</param>
+            <returns>
+                The operating system handle for the shared library.
+                If the library cannot be loaded, IntPtr.Zero should be returned.
+            </returns>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.CoreFreeNativeLibrary(System.IntPtr)">
+            <summary>
+                Frees the library represented by the given operating system handle.
+            </summary>
+            <param name="handle">The handle of the open shared library. This must not be zero.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.CoreLoadFunctionPointer(System.IntPtr,System.String)">
+            <summary>
+                Loads a function pointer out of the given library by name.
+            </summary>
+            <param name="handle">The operating system handle of the opened shared library. This must not be zero.</param>
+            <param name="functionName">The name of the exported function to load. This must not be null or empty.</param>
+            <returns>A pointer to the loaded function.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.LibraryLoader.GetPlatformDefaultLoader">
+            <summary>
+                Returns a default library loader for the running operating system.
+            </summary>
+            <returns>A LibraryLoader suitable for loading libraries.</returns>
+        </member>
+        <member name="T:Silk.NET.Core.Loader.PathResolver">
+            <summary>
+                Enumerates possible library load targets.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.Loader.PathResolver.Default">
+            <summary>
+                Gets a default path resolver.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.PathResolver.EnumeratePossibleLibraryLoadTargets(System.String)">
+            <summary>
+                Returns an enumerator which yields possible library load targets, in priority order.
+            </summary>
+            <param name="name">The name of the library to load.</param>
+            <returns>An enumerator yielding load targets.</returns>
+        </member>
+        <member name="T:Silk.NET.Core.Loader.SearchPathContainer">
+            <summary>
+            Contains the platform-specific search paths and names for a native library.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.Loader.SearchPathContainer.Windows64">
+            <summary>
+            Gets the library name to use on Windows 64-bit.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.Loader.SearchPathContainer.Windows86">
+            <summary>
+            Gets the library name to use on Windows 32-bit.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.Loader.SearchPathContainer.Linux">
+            <summary>
+            Gets the library name to use on Linux.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.Loader.SearchPathContainer.MacOS">
+            <summary>
+            Gets the library name to use on MacOS.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.Loader.SearchPathContainer.Android">
+            <summary>
+            Gets the library name to use on Android.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.Loader.SearchPathContainer.IOS">
+            <summary>
+            Gets the library name to use on iOS.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.SearchPathContainer.GetLibraryName">
+            <summary>
+            Gets the library name to use on the current platform.
+            </summary>
+            <returns>The library name.</returns>
+        </member>
+        <member name="T:Silk.NET.Core.Loader.UnmanagedLibrary">
+            <summary>
+                Represents a native shared library opened by the operating system.
+                This type can be used to load native function pointers by name.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.UnmanagedLibrary.#ctor(System.String)">
+            <summary>
+                Constructs a new NativeLibrary using the platform's default library loader.
+            </summary>
+            <param name="name">The name of the library to load.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.UnmanagedLibrary.#ctor(System.String[])">
+            <summary>
+                Constructs a new NativeLibrary using the platform's default library loader.
+            </summary>
+            <param name="names">An ordered list of names to attempt to load.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.UnmanagedLibrary.#ctor(System.String,Silk.NET.Core.Loader.LibraryLoader)">
+            <summary>
+                Constructs a new NativeLibrary using the specified library loader.
+            </summary>
+            <param name="name">The name of the library to load.</param>
+            <param name="loader">The loader used to open and close the library, and to load function pointers.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.UnmanagedLibrary.#ctor(System.String[],Silk.NET.Core.Loader.LibraryLoader)">
+            <summary>
+                Constructs a new NativeLibrary using the specified library loader.
+            </summary>
+            <param name="names">An ordered list of names to attempt to load.</param>
+            <param name="loader">The loader used to open and close the library, and to load function pointers.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.UnmanagedLibrary.#ctor(System.String,Silk.NET.Core.Loader.LibraryLoader,Silk.NET.Core.Loader.PathResolver)">
+            <summary>
+                Constructs a new NativeLibrary using the specified library loader.
+            </summary>
+            <param name="name">The name of the library to load.</param>
+            <param name="loader">The loader used to open and close the library, and to load function pointers.</param>
+            <param name="pathResolver">The path resolver, used to identify possible load targets for the library.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.UnmanagedLibrary.#ctor(System.String[],Silk.NET.Core.Loader.LibraryLoader,Silk.NET.Core.Loader.PathResolver)">
+            <summary>
+                Constructs a new NativeLibrary using the specified library loader.
+            </summary>
+            <param name="names">An ordered list of names to attempt to load.</param>
+            <param name="loader">The loader used to open and close the library, and to load function pointers.</param>
+            <param name="pathResolver">The path resolver, used to identify possible load targets for the library.</param>
+        </member>
+        <member name="P:Silk.NET.Core.Loader.UnmanagedLibrary.Handle">
+            <summary>
+                The operating system handle of the loaded library.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.UnmanagedLibrary.Dispose">
+            <summary>
+                Frees the native library. Function pointers retrieved from this library will be void.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.UnmanagedLibrary.LoadFunction``1(System.String)">
+            <summary>
+                Loads a function whose signature matches the given delegate type's signature.
+            </summary>
+            <typeparam name="T">The type of delegate to return.</typeparam>
+            <param name="name">The name of the native export.</param>
+            <returns>A delegate wrapping the native function.</returns>
+            <exception cref="T:System.InvalidOperationException">
+                Thrown when no function with the given name
+                is exported from the native library.
+            </exception>
+        </member>
+        <member name="M:Silk.NET.Core.Loader.UnmanagedLibrary.LoadFunction(System.String)">
+            <summary>
+                Loads a function pointer with the given name.
+            </summary>
+            <param name="name">The name of the native export.</param>
+            <returns>A function pointer for the given name, or 0 if no function with that name exists.</returns>
+        </member>
+        <member name="T:Silk.NET.Core.PlatformException">
+            <summary>
+            An exception thrown when an underlying native platform fails to complete an operation due to an error.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.PlatformException.#ctor">
+            <summary>
+            Creates an instance of this exception with the default message.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.PlatformException.#ctor(System.String)">
+            <summary>
+            Creates an instance of this exception with the given message.
+            </summary>
+            <param name="msg">The message.</param>
+        </member>
+        <member name="M:Silk.NET.Core.PlatformException.#ctor(System.Exception)">
+            <summary>
+            Creates an instance of this exception with the given inner exception.
+            </summary>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Silk.NET.Core.PlatformException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates an instance of this exception with the given message and inner exception.
+            </summary>
+            <param name="msg">The message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Silk.NET.Core.PlatformException.#ctor(System.String,System.Exception[])">
+            <summary>
+            Creates an instance of this exception with the given message and inner exceptions.
+            </summary>
+            <param name="msg">The message.</param>
+            <param name="inner">The inner exceptions.</param>
+        </member>
+        <member name="T:Silk.NET.Core.RawImage">
+            <summary>
+            Represents loaded, uncompressed, processed image data.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.RawImage.#ctor(System.Int32,System.Int32,System.Memory{System.Byte})">
+            <summary>
+            Creates a <see cref="T:Silk.NET.Core.RawImage"/> given pixel data and pixel dimensions.
+            </summary>
+            <param name="width">The width of the image.</param>
+            <param name="height">The height of the image.</param>
+            <param name="rgbaPixels">The image daqta.</param>
+        </member>
+        <member name="P:Silk.NET.Core.RawImage.Width">
+            <summary>
+            The width of the image in pixels
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.RawImage.Height">
+            <summary>
+            The height of the image in pixels.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.RawImage.Pixels">
+            <summary>
+            The image data.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.RawImage.op_Equality(Silk.NET.Core.RawImage,Silk.NET.Core.RawImage)">
+            <summary>
+            Checks whether the two given <see cref="T:Silk.NET.Core.RawImage"/>s are equal.
+            </summary>
+            <param name="left">The first raw image.</param>
+            <param name="right">The second raw image to compare the first against.</param>
+            <returns>True if they are equal, false otherwise.</returns>
+            <remarks>
+            This does not check whether the byte arrays are equal, only whether their references are the same.
+            </remarks>  
+        </member>
+        <member name="M:Silk.NET.Core.RawImage.op_Inequality(Silk.NET.Core.RawImage,Silk.NET.Core.RawImage)">
+            <summary>
+            Checks whether the two given <see cref="T:Silk.NET.Core.RawImage"/>s are not equal.
+            </summary>
+            <param name="left">The first raw image.</param>
+            <param name="right">The second raw image to compare the first against.</param>
+            <returns>True if they are not equal, false otherwise.</returns>
+            <remarks>
+            This does not check whether the byte arrays are equal, only whether their references are the same.
+            </remarks>
+        </member>
+        <member name="M:Silk.NET.Core.RawImage.Equals(Silk.NET.Core.RawImage)">
+            <summary>
+            Checks whether the given <see cref="T:Silk.NET.Core.RawImage"/> is equal to this one.
+            </summary>
+            <param name="other">The raw image to compare this raw image against.</param>
+            <returns>True if they are equal, false otherwise.</returns>
+            <remarks>
+            This does not check whether the byte arrays have equal, only whether their references are the same.
+            </remarks>  
+        </member>
+        <member name="M:Silk.NET.Core.RawImage.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Core.RawImage.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="T:Silk.NET.Core.Native.FlowDirection">
+            <summary>
+            How the parameter should flow - in or out?
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Core.Native.FlowDirection.Undefined">
+            <summary>
+            The flow direction is undefined.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Core.Native.FlowDirection.In">
+            <summary>
+            An input parameter.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Core.Native.FlowDirection.Out">
+            <summary>
+            An output parameter.
+            </summary>
+        </member>
+        <member name="T:Silk.NET.Core.Native.FuncPtr">
+            <summary>
+            A function pointer.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Native.FuncPtr.op_Implicit(System.IntPtr)~Silk.NET.Core.Native.FuncPtr">
+            <summary>
+            Convert an <see cref="T:System.IntPtr" /> to a FuncPtr.
+            </summary>
+            <param name="src">The pointer to convert.</param>
+            <returns>The pointer as a FuncPtr.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Native.FuncPtr.op_Implicit(System.Delegate)~Silk.NET.Core.Native.FuncPtr">
+            <summary>
+            Convert a <see cref="T:System.Delegate" /> to a FuncPtr.
+            </summary>
+            <param name="delegate">The delegate to convert.</param>
+            <returns>The delegate as a FuncPtr.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Native.FuncPtr.op_Implicit(Silk.NET.Core.Native.FuncPtr)~System.IntPtr">
+            <summary>
+            Convert a FuncPtr to an IntPtr.
+            </summary>
+            <param name="ptr">The FuncPtr to convert.</param>
+            <returns>The FuncPtr as an IntPtr.</returns>
+        </member>
+        <member name="P:Silk.NET.Core.Native.FuncPtr.Value">
+            <summary>
+            The value of the FuncPtr.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Native.FuncPtr.Of``1(``0)">
+            <summary>
+            Create a FuncPtr from a delegate.
+            </summary>
+            <param name="delegate">The delegate to convert.</param>
+            <typeparam name="T">The type of the delegate.</typeparam>
+            <returns>The resulting FuncPtr.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Native.FuncPtr.#ctor(System.IntPtr)">
+            <summary>
+            Create a new FuncPtr instance.
+            </summary>
+            <param name="ptr">The source pointer.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Native.FuncPtr.#ctor(System.Delegate)">
+            <summary>
+            Create a new FuncPtr instance.
+            </summary>
+            <param name="delegate">The source delegate.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Native.FuncPtr.Get``1">
+            <summary>
+            Get this pointer as a delegate.
+            </summary>
+            <typeparam name="T">The delegate type.</typeparam>
+            <returns>The resulting delegate.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Native.FuncPtr.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="T:Silk.NET.Core.Native.NativeAPI">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.Core.Native.NativeAPI.Context">
+            <summary>
+            The <see cref="T:Silk.NET.Core.Contexts.INativeContext"/> this instance was created with.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Native.NativeAPI.#ctor(Silk.NET.Core.Contexts.INativeContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Silk.NET.Core.Native.NativeAPI.IsExtensionPresent(System.String)">
+            <summary>
+            Whether or not an extension is present. This function might not be valid for some APIs.
+            </summary>
+            <param name="name">The name of the extension.</param>
+            <returns>Whether or not the extension exists.</returns>
+        </member>
+        <member name="P:Silk.NET.Core.Native.NativeApiAttribute.EntryPoint">
+            <summary>
+                Gets or sets the native entry point for this method. Ignored on classes and interfaces.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.Native.NativeApiAttribute.Prefix">
+            <summary>
+                Gets or sets the native entry point prefix for this method. If used on a method, this will override the
+                prefix set in a class or interface declaration. Otherwise, this will be inherited from the class or
+                interface.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.Core.Native.NativeApiAttribute.Convention">
+            <summary>
+                Gets or sets the calling convention.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Native.NativeExtension`1.#ctor(Silk.NET.Core.Contexts.INativeContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Silk.NET.Core.Native.SilkMarshal">
+            <summary>
+            A helper class that marshals between native and managed types.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Native.SilkMarshal.AllocBStr(System.Int32)">
+            <summary>
+            Allocate a new BStr pointer.
+            </summary>
+            <param name="length">The length of the string pointer, in bytes.</param>
+            <returns>A pointer to the created string.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Native.SilkMarshal.MarshalStringToPtr(System.String)">
+            <summary>
+            Converts a C# string to an ANSI string pointer.
+            </summary>
+            <param name="str">The input string.</param>
+            <returns>A pointer to a native ANSI string.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Native.SilkMarshal.MarshalPtrToString(System.IntPtr)">
+            <summary>
+            Converts an ANSI string pointer to a C# string.
+            </summary>
+            <param name="str">A pointer to the ANSI string to convert.</param>
+            <returns>A C# string.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Native.SilkMarshal.FreeStringPtr(System.IntPtr)">
+            <summary>
+            Free a string pointer.
+            </summary>
+            <param name="ptr">The pointer to free.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Native.SilkMarshal.NewStringPtr(System.Int32)">
+            <summary>
+            Allocate a new string pointer.
+            </summary>
+            <param name="length">The length of the string pointer, in bytes.</param>
+            <returns>A pointer to the created string.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Native.SilkMarshal.NewStringPtr(System.UInt32)">
+            <summary>
+            Allocate a new string pointer.
+            </summary>
+            <param name="length">The length of the string pointer, in bytes.</param>
+            <returns>A pointer to the created string.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Native.SilkMarshal.MarshalStringArrayToPtr(System.Collections.Generic.IReadOnlyList{System.String})">
+            <summary>
+            Convert an array of strings into a pointer.
+            </summary>
+            <param name="array">The array of strings to convert.</param>
+            <returns>The new pointer.</returns>
+            <exception cref="T:System.OutOfMemoryException">Thrown if enough memory cannot be allocated.</exception>
+        </member>
+        <member name="M:Silk.NET.Core.Native.SilkMarshal.MarshalPtrToStringArray(System.IntPtr,System.Int32)">
+            <summary>
+            Convert a pointer to a string array.
+            </summary>
+            <param name="ptr">The pointer to convert.</param>
+            <param name="length">The number of strings in the pointer.</param>
+            <returns>An array of strings.</returns>
+        </member>
+        <member name="M:Silk.NET.Core.Native.SilkMarshal.CopyPtrToStringArray(System.IntPtr,System.String[])">
+            <summary>
+            Convert a pointer to an array of strings.
+            </summary>
+            <param name="ptr">The pointer to convert.</param>
+            <param name="arr">The array to fill with strings.</param>
+        </member>
+        <member name="M:Silk.NET.Core.Native.SilkMarshal.FreeStringArrayPtr(System.IntPtr,System.Int32)">
+            <summary>
+            Free an array of strings.
+            </summary>
+            <param name="ptr">The pointer to free.</param>
+            <param name="length">The number of strings in the pointer.</param>
+        </member>
+        <member name="T:Silk.NET.Core.Native.VkHandle">
+            <summary>
+                A handle to a Vulkan object.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Core.Native.VkHandle.Handle">
+            <summary>
+            The actual value of the Vulkan handle.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Native.VkHandle.#ctor(System.IntPtr)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Silk.NET.Core.Native.VkHandle" /> struct.
+            </summary>
+            <param name="handle">
+            The native Vulkan handle.
+            This is NOT a pointer to a field containing the handle, this is the actual handle itself.
+            </param>
+        </member>
+        <member name="T:Silk.NET.Core.Native.VkNonDispatchableHandle">
+            <summary>
+                A handle to a Vulkan object.
+            </summary>
+        </member>
+        <member name="F:Silk.NET.Core.Native.VkNonDispatchableHandle.Handle">
+            <summary>
+            The actual value of the Vulkan handle.
+            </summary>
+        </member>
+        <member name="M:Silk.NET.Core.Native.VkNonDispatchableHandle.#ctor(System.UInt64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Silk.NET.Core.Native.VkNonDispatchableHandle" /> struct.
+            </summary>
+            <param name="handle">
+            The native Vulkan handle.
+            This is NOT a pointer to a field containing the handle, this is the actual handle itself.
+            </param>
+        </member>
+    </members>
+</doc>

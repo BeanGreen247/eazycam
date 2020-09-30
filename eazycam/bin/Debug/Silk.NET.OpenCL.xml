@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Silk.NET.OpenCL</name>
+    </assembly>
+    <members>
+        <member name="T:Silk.NET.OpenCL.OpenCLLibraryNameContainer">
+            <summary>
+            Contains the library name of OpenCL.
+            </summary>
+        </member>
+        <member name="P:Silk.NET.OpenCL.OpenCLLibraryNameContainer.Linux">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.OpenCL.OpenCLLibraryNameContainer.MacOS">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.OpenCL.OpenCLLibraryNameContainer.Android">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.OpenCL.OpenCLLibraryNameContainer.IOS">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.OpenCL.OpenCLLibraryNameContainer.Windows64">
+            <inheritdoc />
+        </member>
+        <member name="P:Silk.NET.OpenCL.OpenCLLibraryNameContainer.Windows86">
+            <inheritdoc />
+        </member>
+        <member name="F:Silk.NET.OpenCL.BufferRegion.Origin">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.BufferRegion.Size">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.Dx9SurfaceInfoKhr.Resource">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.Dx9SurfaceInfoKhr.SharedHandle">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.ImageDesc.ImageType">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.ImageDesc.ImageWidth">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.ImageDesc.ImageHeight">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.ImageDesc.ImageDepth">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.ImageDesc.ImageArraySize">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.ImageDesc.ImageRowPitch">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.ImageDesc.ImageSlicePitch">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.ImageDesc.NumMipLevels">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.ImageDesc.NumSamples">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.ImageFormat.ImageChannelOrder">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.ImageFormat.ImageChannelDataType">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.MemAndroidNativeBufferHostPtr.ExtHostPtr">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.MemAndroidNativeBufferHostPtr.AnbPtr">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.MemExtHostPtr.AllocationType">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.MemExtHostPtr.HostCachePolicy">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.MemIonHostPtr.ExtHostPtr">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.MemIonHostPtr.IonFiledesc">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.MemIonHostPtr.IonHostptr">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.MotionEstimationDescIntel.MbBlockType">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.MotionEstimationDescIntel.SubpixelMode">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.MotionEstimationDescIntel.SadAdjustMode">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.MotionEstimationDescIntel.SearchPathType">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.NameVersion.Version">
+            <summary></summary>
+        </member>
+        <member name="F:Silk.NET.OpenCL.NameVersion.Name">
+            <summary></summary>
+        </member>
+    </members>
+</doc>

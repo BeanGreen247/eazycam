@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenCL.NET</name>
+    </assembly>
+    <members>
+        <member name="T:CASS.OpenCL.OpenCL">
+            <summary>
+            This class provides object oriented access to OpenCL(TM) driver API 
+            and further utilities for simpler programming.
+            
+            There are three ways to instantiate this class:
+            1. Specify a single device - a context will be created with given 
+            information.
+            2. Specify multiple devices - a context will be created with given 
+            information and sharing of listed devices.
+            3. Specify a previously created context. A new context will not be 
+            created, but the reference count of the specified context will be incremented by 1.
+            
+            Throughout the lifetime of an instance, a single context can be created.
+            </summary>
+        </member>
+        <member name="M:CASS.OpenCL.OpenCL.#ctor(CASS.OpenCL.CLPlatformID,CASS.OpenCL.CLDeviceID)">
+            <summary>
+            Creates a new instance, with an OpenCL(TM) context created using the given 
+            platform and device.
+            </summary>
+            <param name="platform">Platform for OpenCL(TM) context creation.</param>
+            <param name="device">Device to include in OpenCL(TM) context.</param>
+        </member>
+        <member name="M:CASS.OpenCL.OpenCL.#ctor(CASS.OpenCL.CLPlatformID,CASS.OpenCL.CLDeviceID[])">
+            <summary>
+            Creates a new instance, with an OpenCL(TM) context created using the given 
+            platform and multiple devices.
+            </summary>
+            <param name="platform">Platform for OpenCL(TM) context creation.</param>
+            <param name="devices">Devices to include in OpenCL(TM) context.</param>
+        </member>
+        <member name="M:CASS.OpenCL.OpenCL.#ctor(CASS.OpenCL.CLContext)">
+            <summary>
+            Creates a new instance from already existing OpenCL(TM) context.
+            Perform a retain of the context.
+            </summary>
+            <param name="ctx">OpenCL(TM) context to use.</param>
+        </member>
+        <member name="M:CASS.OpenCL.OpenCL.Dispose">
+            <summary>
+            Disposes OpenCL(TM) context (release).
+            </summary>
+        </member>
+        <member name="M:CASS.OpenCL.OpenCL.Finalize">
+            <summary>
+            Destructor.
+            </summary>
+        </member>
+        <member name="M:CASS.OpenCL.OpenCL.GetContextInfo(CASS.OpenCL.CLContextInfo)">
+            <summary>
+            Returns requested information about the context of the instance.
+            </summary>
+            <param name="info">Requested information.</param>
+            <returns>Value which depends on the type of information requested.</returns>
+        </member>
+        <member name="P:CASS.OpenCL.OpenCL.LastCLError">
+            <summary>
+            Gets last OpenCL(TM) error that occured when calling an API function.
+            </summary>
+        </member>
+        <member name="P:CASS.OpenCL.OpenCL.Context">
+            <summary>
+            Gets OpenCL(TM) context used by this instance.
+            </summary>
+        </member>
+        <member name="P:CASS.OpenCL.OpenCL.Devices">
+            <summary>
+            Gets devices attached to the current context.
+            </summary>
+        </member>
+        <member name="P:CASS.OpenCL.OpenCL.LastEnqueueEvent">
+            <summary>
+            Gets the event associated with the last enqueue operation.
+            </summary>
+        </member>
+        <member name="M:CASS.OpenCL.OpenCL.GetPlatforms">
+            <summary>
+            Returns an array of available platforms in the system.
+            If no platform is found, an array with zero elements is returned.
+            </summary>
+            <returns>An array of available platforms in the system.</returns>
+        </member>
+        <member name="M:CASS.OpenCL.OpenCL.GetPlatformInfo(CASS.OpenCL.CLPlatformID,CASS.OpenCL.CLPlatformInfo)">
+            <summary>
+            Returns requested information about a platform.
+            </summary>
+            <param name="platform">Platform ID to query.</param>
+            <param name="info">Requested information.</param>
+            <returns>Value which depends on the type of information requested.</returns>
+        </member>
+        <member name="M:CASS.OpenCL.OpenCL.GetDevices(CASS.OpenCL.CLPlatformID)">
+            <summary>
+            Returns an array of available devices in the platform of all types.
+            If no device is found, an array with zero elements is returned.
+            </summary>
+            <param name="platform">Platform to query devices.</param>
+            <returns>An array of available devices in the platform of all types.</returns>
+        </member>
+        <member name="M:CASS.OpenCL.OpenCL.GetDevices(CASS.OpenCL.CLPlatformID,CASS.OpenCL.CLDeviceType)">
+            <summary>
+            Returns an array of available devices in the platform with following type.
+            If no device is found, an array with zero elements is returned.
+            </summary>
+            <param name="platform">Platform to query devices.</param>
+            <param name="devType">Type of device to query.</param>
+            <returns>An array of available devices in the platform with following type.</returns>
+        </member>
+        <member name="M:CASS.OpenCL.OpenCL.GetDeviceInfo(CASS.OpenCL.CLDeviceID,CASS.OpenCL.CLDeviceInfo)">
+            <summary>
+            Returns requested information about a device.
+            </summary>
+            <param name="device">Device ID to query.</param>
+            <param name="info">Requested information.</param>
+            <returns>Value which depends on the type of information requested.</returns>
+        </member>
+        <member name="M:CASS.OpenCL.OpenCL.GetContextInfo(CASS.OpenCL.CLContext,CASS.OpenCL.CLContextInfo)">
+            <summary>
+            Returns requested information about a context.
+            </summary>
+            <param name="ctx">Context to get information for.</param>
+            <param name="info">Requested information.</param>
+            <returns>Value which depends on the type of information requested.</returns>
+        </member>
+        <member name="T:CASS.OpenCL.OpenCLException">
+            <summary>
+            Represents an OpenCL(TM) exception that occured in one of the API functions.
+            </summary>
+        </member>
+        <member name="M:CASS.OpenCL.OpenCLException.#ctor(CASS.OpenCL.CLError)">
+            <summary>
+            Creates a new exception instance with given error code.
+            </summary>
+            <param name="error">OpenCL(TM) error code.</param>
+        </member>
+        <member name="P:CASS.OpenCL.OpenCLException.Message">
+            <summary>
+            Gets OpenCL(TM) error string and code.
+            </summary>
+        </member>
+        <member name="P:CASS.OpenCL.OpenCLException.OpenCLErrorCode">
+            <summary>
+            OpenCL(TM) error code.
+            </summary>
+        </member>
+        <member name="T:CASS.OpenCL.OpenGL.OpenCLGLDriver">
+            <summary>
+            This class provides the driver interface for OpenGL interoperability
+            with OpenCL standard.
+            </summary>
+        </member>
+        <member name="T:CASS.OpenCL.OpenCLDriver">
+            <summary>
+            This class provides the driver interface to OpenCL functions.
+            </summary>
+        </member>
+        <member name="T:CASS.Types.SizeT">
+            <summary>
+            Used to represent a platform dependent sized variable.
+            On 32 bit platforms it is 4 bytes wide (int, uint), on 64 bit it is
+            8 bytes wide (long, ulong).
+            
+            This class maps to the C/C++ native size_t data type.
+            </summary>
+        </member>
+        <member name="M:CASS.Types.SizeT.#ctor(System.Int32)">
+            <summary>
+            Creates a new instance based on the given value.
+            </summary>
+            <param name="value">Integer value to represent.</param>
+        </member>
+        <member name="M:CASS.Types.SizeT.#ctor(System.UInt32)">
+            <summary>
+            Creates a new instance based on the given value.
+            </summary>
+            <param name="value">Integer value to represent.</param>
+        </member>
+        <member name="M:CASS.Types.SizeT.#ctor(System.Int64)">
+            <summary>
+            Creates a new instance based on the given value.
+            </summary>
+            <param name="value">Integer value to represent.</param>
+        </member>
+        <member name="M:CASS.Types.SizeT.#ctor(System.UInt64)">
+            <summary>
+            Creates a new instance based on the given value.
+            </summary>
+            <param name="value">Integer value to represent.</param>
+        </member>
+        <member name="M:CASS.Types.SizeT.op_Implicit(CASS.Types.SizeT)~System.Int32">
+            <summary>
+            Converts the object to int.
+            </summary>
+            <param name="t">Object to convert.</param>
+            <returns>Integer value represented by the object.</returns>
+        </member>
+        <member name="M:CASS.Types.SizeT.op_Implicit(CASS.Types.SizeT)~System.UInt32">
+            <summary>
+            Converts the object to uint.
+            </summary>
+            <param name="t">Object to convert.</param>
+            <returns>Integer value represented by the object.</returns>
+        </member>
+        <member name="M:CASS.Types.SizeT.op_Implicit(CASS.Types.SizeT)~System.Int64">
+            <summary>
+            Converts the object to long.
+            </summary>
+            <param name="t">Object to convert.</param>
+            <returns>Integer value represented by the object.</returns>
+        </member>
+        <member name="M:CASS.Types.SizeT.op_Implicit(CASS.Types.SizeT)~System.UInt64">
+            <summary>
+            Converts the object to ulong.
+            </summary>
+            <param name="t">Object to convert.</param>
+            <returns>Integer value represented by the object.</returns>
+        </member>
+        <member name="M:CASS.Types.SizeT.op_Implicit(System.Int32)~CASS.Types.SizeT">
+            <summary>
+            Converts the given integer to an object.
+            </summary>
+            <param name="value">Integer value to convert.</param>
+            <returns>New object representing this value.</returns>
+        </member>
+        <member name="M:CASS.Types.SizeT.op_Implicit(System.UInt32)~CASS.Types.SizeT">
+            <summary>
+            Converts the given integer to an object.
+            </summary>
+            <param name="value">Integer value to convert.</param>
+            <returns>New object representing this value.</returns>
+        </member>
+        <member name="M:CASS.Types.SizeT.op_Implicit(System.Int64)~CASS.Types.SizeT">
+            <summary>
+            Converts the given integer to an object.
+            </summary>
+            <param name="value">Integer value to convert.</param>
+            <returns>New object representing this value.</returns>
+        </member>
+        <member name="M:CASS.Types.SizeT.op_Implicit(System.UInt64)~CASS.Types.SizeT">
+            <summary>
+            Converts the given integer to an object.
+            </summary>
+            <param name="value">Integer value to convert.</param>
+            <returns>New object representing this value.</returns>
+        </member>
+        <member name="M:CASS.Types.SizeT.op_Inequality(CASS.Types.SizeT,CASS.Types.SizeT)">
+            <summary>
+            Compares two SizeT objects.
+            </summary>
+            <param name="val1">First value to compare.</param>
+            <param name="val2">Second value to compare.</param>
+            <returns>true or false for the comparison result.</returns>
+        </member>
+        <member name="M:CASS.Types.SizeT.op_Equality(CASS.Types.SizeT,CASS.Types.SizeT)">
+            <summary>
+            Compares two SizeT objects.
+            </summary>
+            <param name="val1">First value to compare.</param>
+            <param name="val2">Second value to compare.</param>
+            <returns>true or false for the comparison result.</returns>
+        </member>
+        <member name="M:CASS.Types.SizeT.Equals(System.Object)">
+            <summary>
+            Returns a value indicating whether this instance is equal to a specified object.
+            </summary>
+            <param name="obj">An object to compare with this instance or null.</param>
+            <returns>true if obj is an instance of System.IntPtr and equals the value of this instance; otherwise, false.</returns>
+        </member>
+        <member name="M:CASS.Types.SizeT.ToString">
+            <summary>
+            Converts the numeric value of the current object to its equivalent string representation.
+            </summary>
+            <returns>The string representation of the value of this instance.</returns>
+        </member>
+        <member name="M:CASS.Types.SizeT.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>A 32-bit signed integer hash code.</returns>
+        </member>
+    </members>
+</doc>
