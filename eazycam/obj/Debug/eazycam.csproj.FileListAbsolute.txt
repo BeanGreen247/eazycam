@@ -18,7 +18,6 @@ C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\bin\Debug\AForge.Video.Dire
 C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\obj\Debug\eazycam.csproj.CopyComplete
 C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\obj\Debug\eazycam.exe
 C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\obj\Debug\eazycam.pdb
-C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\obj\Debug\eazycam.csprojAssemblyReference.cache
 C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\bin\Debug\Microsoft.Bcl.HashCode.dll
 C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\bin\Debug\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\bin\Debug\Microsoft.Extensions.DependencyModel.dll
@@ -42,3 +41,5 @@ C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\bin\Debug\System.Memory.xml
 C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\obj\Debug\eazycam.Form2.resources
+C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\obj\Debug\eazycam.csprojAssemblyReference.cache
+C:\Users\Thomas Mozdren\source\repos\eazycam\eazycam\obj\Debug\eazycam.Form3.resources

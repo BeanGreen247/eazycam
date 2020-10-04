@@ -31,26 +31,65 @@ namespace eazycam
 
         public void Form1_Load(object sender, EventArgs e)
         {
-            string CameraNameFull = "";
+            //string CameraNameFull = "";
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach (FilterInfo Device in filterInfoCollection) {
                 comboBox1.Items.Add(Device.Name);
-                if (Device.Name == "FaceCam 1000X")
-                {
-                    CameraNameFull = Device.Name;
-                }
-                //CameraNameFull = Convert.ToString(Device.Name);
             }
-            File.WriteAllText("cameras.txt", CameraNameFull);
+            if (comboBox1.Items[0] == null)
+            {
+                radioButton1.Text = "DeviceName";
+            }
+            else if (comboBox1.Items[0].ToString() != null)
+            {
+                radioButton1.Text = comboBox1.Items[0].ToString();
+            }
+            if (comboBox1.Items[1] == null)
+            {
+                radioButton2.Text = "DeviceName";
+            }
+            else if (comboBox1.Items[1].ToString() != null)
+            {
+                radioButton2.Text = comboBox1.Items[1].ToString();
+            }
+            if (comboBox1.Items[2] == null)
+            {
+                radioButton3.Text = "DeviceName";
+            }
+            else if (comboBox1.Items[2].ToString() != null)
+            {
+                radioButton3.Text = comboBox1.Items[2].ToString();
+            }
+            //if (comboBox1.Items[3] == null)
+            //{
+            //    radioButton4.Text = "DeviceName";
+            //}
+            //else if (comboBox1.Items[3].ToString() != null)
+            //{
+            //    radioButton4.Text = comboBox1.Items[3].ToString();
+            //}
+            //if (comboBox1.Items[4] == null)
+            //{
+            //    radioButton5.Text = "DeviceName";
+            //}
+            //else if (comboBox1.Items[4].ToString() != null)
+            //{
+            //    radioButton5.Text = comboBox1.Items[4].ToString();
+            //}
+            //if (comboBox1.Items[5] == null)
+            //{
+            //    radioButton6.Text = "DeviceName";
+            //}
+            //else if (comboBox1.Items[5].ToString() != null)
+            //{
+            //    radioButton6.Text = comboBox1.Items[5].ToString();
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Website: beangreen247.github.io" + "\n" +
-                            "Thomas Mozdren Software Development" + "\n" +
-                            "mozdrent@gmail.com" + "\n" +
-                            "Copyright © beangreen247.github.io 2020" + "\n" +
-                            "Versio: 1.0.0", "About");
+            Form3 fm3 = new Form3();
+            fm3.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)

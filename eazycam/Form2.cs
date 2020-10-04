@@ -41,20 +41,87 @@ namespace eazycam
         public VideoCapabilities VideoResolution { get; set; }
         public void Form2_Load(object sender, EventArgs e)
         {
-            string cameraname = File.ReadAllText("cameras.txt");
             filterInfoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            foreach (FilterInfo Device in filterInfoCollection)
+            Form1 fm1 = new Form1();
+            if (fm1.radioButton1.Checked == true)
             {
-                if (Device.Name == cameraname)
+                if (fm1.radioButton1.Text== "DeviceName")
                 {
-                    cameraname = Device.Name;
+                    videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[0].MonikerString);
+                    videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                    videoCaptureDevice.Start();
                 }
-            }
-                //videoCaptureDevice = new VideoCaptureDevice(cameraname);
                 videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[0].MonikerString);
-            videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                videoCaptureDevice.Start();
+            }
+            if (fm1.radioButton2.Checked == true)
+            {
+                if (fm1.radioButton2.Text == "DeviceName")
+                {
+                    videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[0].MonikerString);
+                    videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                    videoCaptureDevice.Start();
+                }
+                videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[1].MonikerString);
+                videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                videoCaptureDevice.Start();
+            }
+            if (fm1.radioButton3.Checked == true)
+            {
+                if (fm1.radioButton3.Text == "DeviceName")
+                {
+                    videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[0].MonikerString);
+                    videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                    videoCaptureDevice.Start();
+                }
+                videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[2].MonikerString);
+                videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                videoCaptureDevice.Start();
+            }
+            if (fm1.radioButton4.Checked == true)
+            {
+                if (fm1.radioButton4.Text == "DeviceName")
+                {
+                    videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[0].MonikerString);
+                    videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                    videoCaptureDevice.Start();
+                }
+                videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[3].MonikerString);
+                videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                videoCaptureDevice.Start();
+            }
+            if (fm1.radioButton5.Checked == true)
+            {
+                if (fm1.radioButton5.Text == "DeviceName")
+                {
+                    videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[0].MonikerString);
+                    videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                    videoCaptureDevice.Start();
+                }
+                videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[4].MonikerString);
+                videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                videoCaptureDevice.Start();
+            }
+            if (fm1.radioButton6.Checked == true)
+            {
+                if (fm1.radioButton6.Text == "DeviceName")
+                {
+                    videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[0].MonikerString);
+                    videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                    videoCaptureDevice.Start();
+                }
+                videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[5].MonikerString);
+                videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                videoCaptureDevice.Start();
+            }
+            else
+            {
+                videoCaptureDevice = new VideoCaptureDevice(filterInfoCollection[0].MonikerString);
+                videoCaptureDevice.NewFrame += FinalFrame_NewFrame;
+                videoCaptureDevice.Start();
+            }
             //videoCaptureDevice.DesiredFrameRate = 30;
-            videoCaptureDevice.Start();
         }
         void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
@@ -68,6 +135,9 @@ namespace eazycam
         {
             if (videoCaptureDevice.IsRunning == true)
                 videoCaptureDevice.Stop();
+            else
+                videoCaptureDevice.Stop();
+                //Application.Exit();
         }
     }
 }
